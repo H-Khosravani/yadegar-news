@@ -1,3 +1,5 @@
+Draft.php
+Draft.blade.php
 /node_modules
 /public/build
 /public/hot
@@ -16,5 +18,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-Draft.php
-Draft.blade.php
+
