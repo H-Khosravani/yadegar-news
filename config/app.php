@@ -186,6 +186,9 @@ return [
          * Package Service Providers...
          */
 
+        /* Module Service Providers...*/
+        Mlk\Home\Providers\HomeServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
