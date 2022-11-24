@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fa',
 
     /*
     |--------------------------------------------------------------------------
@@ -188,6 +188,8 @@ return [
 
         /* Module Service Providers...*/
         Mlk\Home\Providers\HomeServiceProvider::class,
+        Mlk\User\Providers\UserServiceProvider::class,
+        Mlk\Auth\Providers\AuthServiceProvider::class,
 
         /*
          * Application Service Providers...

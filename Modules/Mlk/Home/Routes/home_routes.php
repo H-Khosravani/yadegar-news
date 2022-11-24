@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Mlk\Home\Http\Controllers\HomeController;
 
- Route::get('/', [HomeController::class , 'index']);
+ Route::get('/', [HomeController::class , 'index'])->name('home.index')->middleware(['auth', 'verified']);
 
 
 // Route::group([], function () {
