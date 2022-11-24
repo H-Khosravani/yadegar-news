@@ -23,6 +23,7 @@ Route::group([], function ($router) {
     $router->get('password/reset', 'ResetController@reset')->name('password.reset')->middleware('guest');
     $router->post('password/reset', 'ResetController@update')->name('password.update')->middleware('guest');
 
-
+    // Logout
+    $router->get('logout', 'LogoutController')->name('auth.logout')->middleware('auth');
 
 });

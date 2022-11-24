@@ -381,6 +381,14 @@
                                         تماس با ما
                                     </a>
                                 </li>
+                                @auth
+                                    <li class="cat-item cat-item-5"><a href="#">{{ auth()->user()->name }}</a></li>
+                                    <li class="cat-item cat-item-6"><a href="{{ route('auth.logout') }}">خروج</a></li>
+                                @endauth
+                                @guest
+                                    <li class="cat-item cat-item-7"><a href="{{ route('auth.register') }}">ثبت نام</a></li>
+                                    <li class="cat-item cat-item-2"><a href="{{ route('login') }}">ورود</a></li>
+                                @endguest
                             </ul>
                             <div class="d-inline mr-50 tools-icon">
                                 <a class="red-tooltip text-danger" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="موضوعات جدید">
