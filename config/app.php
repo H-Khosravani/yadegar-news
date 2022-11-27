@@ -190,6 +190,7 @@ return [
         Mlk\Home\Providers\HomeServiceProvider::class,
         Mlk\User\Providers\UserServiceProvider::class,
         Mlk\Auth\Providers\AuthServiceProvider::class,
+        Mlk\Panel\Providers\PanelServiceProvider::class,
 
         /*
          * Application Service Providers...
