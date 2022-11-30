@@ -191,6 +191,7 @@ return [
         Mlk\User\Providers\UserServiceProvider::class,
         Mlk\Auth\Providers\AuthServiceProvider::class,
         Mlk\Panel\Providers\PanelServiceProvider::class,
+        Mlk\Category\Providers\CategoryServiceProvider::class,
 
         /*
          * Application Service Providers...
