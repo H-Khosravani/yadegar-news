@@ -1,10 +1,11 @@
-<?php 
+<?php
 
 
 return [
     'menus' => [
-        'panel' => [], 
-        'home' => []
+        'panel' => [],
+        'home' => [],
+        'users' => [],
     ],
 ];
 
