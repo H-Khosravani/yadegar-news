@@ -3,6 +3,7 @@
 namespace Mlk\Category\Providers;
 
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,13 +14,14 @@ class CategoryServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
         $this->loadViewsFrom(__DIR__ . '/../Resources/Views/', 'Category');
         $this->loadJsonTranslationsFrom(__DIR__ . '/../Resources/Lang');
-        
+
         Route::middleware('web')->namespace('Mlk\Category\Http\Controllers')->group(__DIR__ . '/../Routes/category_routes.php');
+
+        Gate::policy(Category::class, CategoryPolicy::class);
    }
 
     public function boot()
     {
-        # Sidebar Panel And Create Category Side-Menu :
         config()->set('panelConfig.menus.categories', [
             'url'   => route('categories.index'),
             'title' => 'دسته بندی ها',

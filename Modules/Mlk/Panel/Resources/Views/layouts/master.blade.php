@@ -29,5 +29,6 @@
         </div>
         <div class="rightbar-overlay"></div>
         @include('Panel::section.js')
+        @include('sweetalert::alert')
     </body>
 </html>

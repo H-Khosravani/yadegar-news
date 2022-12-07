@@ -186,12 +186,15 @@ return [
          * Package Service Providers...
          */
 
+        Spatie\Permission\PermissionServiceProvider::class,
+
         /* Module Service Providers...*/
         Mlk\Home\Providers\HomeServiceProvider::class,
         Mlk\User\Providers\UserServiceProvider::class,
         Mlk\Auth\Providers\AuthServiceProvider::class,
         Mlk\Panel\Providers\PanelServiceProvider::class,
         Mlk\Category\Providers\CategoryServiceProvider::class,
+        Mlk\Role\Providers\RoleServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -216,7 +219,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ])->toArray(),
 
 ];

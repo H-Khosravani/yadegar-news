@@ -1,0 +1,11 @@
+{
+    "permission super admin": "مدیر کل",
+    "permission panel": "دسترسی پنل مدیریت",
+    "permission users": "دسترسی کاربران",
+    "permission categories": "دسترسی دسته بندی ها",
+    "permission roles": "دسترسی مقام ها",
+    "permission articles": "دسترسی مقالات",
+    "permission authors": "دسترسی نویسنده",
+    "permission comments": "دسترسی نظرات",
+    "permission advertisings": "دسترسی تبلیغات"
+}

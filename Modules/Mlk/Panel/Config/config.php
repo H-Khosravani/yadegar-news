@@ -7,6 +7,7 @@ return [
         'home' => [],
         'users' => [],
         'categories' => [],
+        'roles' => [],
     ],
 ];
 

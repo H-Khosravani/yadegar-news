@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+//Route::get('t', function () { # X.com/t
+//    auth()->user()->givePermissionTo(\Mlk\Role\Models\Permission::PERMISSION_SUPER_ADMIN);
+//});

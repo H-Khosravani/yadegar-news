@@ -25,6 +25,7 @@
                                     <th>#</th>
                                     <th>نام کاربری</th>
                                     <th>ایمیل</th>
+                                    <th>مقام ها</th>
                                     <th>وضعیت تایید ایمیل</th>
                                     <th>تاریخ عضویت</th>
                                     <th>عملیات</th>
@@ -37,6 +38,24 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
+                                            <ul style="list-style: none;">
+                                                @foreach ($user->roles as $role)
+                                                    <li>
+                                                        {{ $role->name }}
+                                                        <a href="#"
+                                                        onclick="event.preventDefault(); document.getElementById('delete-role-{{ $role->id }}').submit()">
+                                                            <i class="fa fa-minus-circle"></i>
+                                                        </a>
+                                                    </li>
+                                                    <form method="POST" id="delete-role-{{ $role->id }}"
+                                                    action="{{ route('users.remove.role', ['userId' => $user->id, 'roleId' => $role->id]) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                        <td>
                                             <span class="badge badge-{{ $user->cssStatusEmailVerifiedAt() }}">
                                                 {{ $user->textStatusEmailVerifiedAt() }}
                                             </span>
@@ -46,6 +65,9 @@
                                             <div class="row">
                                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                <a href="{{ route('users.add.role', $user->id) }}" class="btn btn-success ml-1">
+                                                    <i class="fas fa-plus"></i>
                                                 </a>
                                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                                     @csrf
@@ -61,7 +83,7 @@
                             </tbody>
                         </table>
                         <div class="mt-2">
-                            {{ $users->links() }}
+                            {{ $users->links() }} {{-- paginator::useBootstrap(); --}}
                         </div>
                     </div>
                 </div>
