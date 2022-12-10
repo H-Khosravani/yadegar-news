@@ -8,6 +8,7 @@ return [
         'users' => [],
         'categories' => [],
         'roles' => [],
+        'articles' => [],
     ],
 ];
 

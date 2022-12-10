@@ -29,8 +29,18 @@ class CategoryRepo
         return $category->update(['status' => Category::STATUS_ACTIVE]);
     }
 
+    public function getActiveCategories() # Relation With articles Table
+    {
+        return $this->query()->where('status', Category::STATUS_ACTIVE)->latest();
+    }
+
+    public function findBySlug($slug)
+    {
+        return $this->query()->where('status', Category::STATUS_ACTIVE)->whereSlug($slug)->first();
+    }
+
     private function query(): \Illuminate\Database\Eloquent\Builder
     {
-        return Category::query();# This Code Repeated Above Methods => Here Refactor Above Methods! - Clean Code - Change Here => Change EveryWhere! - Decrease Dependency
+        return Category::query();
     }
 }

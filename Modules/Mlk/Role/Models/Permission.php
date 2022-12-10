@@ -27,4 +27,4 @@ class Permission extends PermissionSpatie
         self::PERMISSION_COMMENTS,
         self::PERMISSION_ADVERTISINGS,
     ];
-}
+}# Every Time Add New Permission Role Must Execure comand php artisan db:seed
