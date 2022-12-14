@@ -197,6 +197,7 @@ return [
         Mlk\Role\Providers\RoleServiceProvider::class,
         Mlk\Article\Providers\ArticleServiceProvider::class,
         Mlk\Comment\Providers\CommentServiceProvider::class,
+        Mlk\Share\Providers\ShareServiceProvider::class,
 
 
         /*

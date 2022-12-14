@@ -38,7 +38,7 @@ class ArticleController extends Controller
     {
         $this->authorize('manage', $this->class);
 
-        $categories = $categoryRepo->getActiveCategories()->get(); # Relation With categories Table
+        $categories = $categoryRepo->getActiveCategories()->get(); 
 
         return view('Article::Admin.create', compact('categories'));
     }
@@ -50,10 +50,10 @@ class ArticleController extends Controller
         // [$imageName, $imagePath] = ShareService::uploadImage($request->file('image'), 'articles');   1
         [$imageName, $imagePath] = $this->service->uploadImage2($request->file('image'), 'articles');
 
-        $this->service->store($request, auth()->id(), $imageName, $imagePath); # INSERT Path And Name File In articles Table
+        $this->service->store($request, auth()->id(), $imageName, $imagePath); 
 
         # alert()->success(, 'عملیات با موفقیت انجام شد');
-        // ShareRepo::successMessage('ساخت مقاله'); 2
+        ShareRepo::successMessage('ساخت مقاله'); 
         return to_route('articles.index');
     }
 
@@ -78,7 +78,7 @@ class ArticleController extends Controller
 
         $this->service->update($request, $id, $imageName, $imagePath);
 
-        // ShareRepo::successMessage('ویرایش مقاله'); 3
+        ShareRepo::successMessage('ویرایش مقاله'); 
         return to_route('articles.index');
     }
 
@@ -87,20 +87,20 @@ class ArticleController extends Controller
         $this->authorize('manage', $this->class);
 
         $article = $this->repo->findById($id);
-        $this->service->deleteImage($article,'articles'); # Delete Image File From ROOT>Public>Storage>images>articles>IMAGEFile
+        $this->service->deleteImage($article,'articles'); 
         $this->repo->delete($id);
 
-        // ShareRepo::successMessage('حذف مقاله'); 4
+        ShareRepo::successMessage('حذف مقاله'); 
         return to_route('articles.index');
     }
 
-    # Change Status Btn Route In index.blade.php
+    
     public function changeStatus($id)
     {
         $article = $this->repo->findById($id);
         $this->service->changeStatus($article);
 
-        // ShareRepo::successMessage('تغییر وضعیت مقاله'); 5
+        ShareRepo::successMessage('تغییر وضعیت مقاله'); 
         return to_route('articles.index');
     }
 
