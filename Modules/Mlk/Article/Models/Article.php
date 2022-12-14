@@ -12,8 +12,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Article extends Model implements Viewable
 {
-    use HasFactory,InteractsWithViews, Likeable;
-    
+    use HasFactory;
+    use InteractsWithViews;
+    use Likeable;
+
     protected $fillable = [
         'user_id', 'category_id', 'title', 'slug', 'time_to_read', 'imageName', 'imagePath', 'score', 'status',
         'type', 'body', 'keywords', 'description',
@@ -22,7 +24,7 @@ class Article extends Model implements Viewable
     public const STATUS_ACTIVE = 'active';
     public const STATUS_PENDING = 'pending';
     public const STATUS_INACTIVE = 'inactive';
-    
+
     public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_PENDING, self::STATUS_INACTIVE];
 
     public const TYPE_VIP = 'vip';
@@ -42,9 +44,13 @@ class Article extends Model implements Viewable
     }
     public function cssStatus()
     {
-        if ($this->status === self::STATUS_ACTIVE) return 'success';
-        else if ($this->status === self::STATUS_INACTIVE) return 'danger';
-        else return 'warning';
+        if ($this->status === self::STATUS_ACTIVE) {
+            return 'success';
+        } elseif ($this->status === self::STATUS_INACTIVE) {
+            return 'danger';
+        } else {
+            return 'warning';
+        }
     }
     public function path()
     {

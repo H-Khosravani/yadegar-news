@@ -17,6 +17,10 @@ class UserServiceProvider extends ServiceProvider
         Route::middleware('web')->namespace('Mlk\User\Http\Controllers')->group(__DIR__ . '/../Routes/user_routes.php');
 
         Gate::policy(User::class, UserPolicy::class);
+
+        Factory::guessFactoryNamesUsing(static function (string $name) {
+            return 'Mlk\User\Database\Factories\\' . class_basename($name) . 'Factory';# use Illuminate\Database\Eloquent\Factories\Factory;
+        });
     }
 
     public function boot()

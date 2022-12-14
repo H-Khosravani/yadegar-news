@@ -1,6 +1,7 @@
 <?php
 
 namespace Mlk\User\Models;
+use Mlk\Article\Models\Article;
 use Laravel\Sanctum\HasApiTokens;
 use Overtrue\LaravelLike\Traits\Liker;
 use Spatie\Permission\Traits\HasRoles;
@@ -43,5 +44,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function articles()
     {
         return $this->hasMany(Article::class);
+    }
+
+    # Methods :
+    public function path()
+    {
+        return route('users.author', $this->name);
+    }
+
+    public function image()
+    {
+        return asset('assets/imgs/logo2.svg');
     }
 }

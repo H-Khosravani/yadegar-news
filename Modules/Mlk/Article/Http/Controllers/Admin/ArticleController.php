@@ -15,7 +15,7 @@ use Mlk\Share\Services\ShareService;
 
 class ArticleController extends Controller
 {
-    private string $class = Article::class; 
+    private string $class = Article::class;
 
     public ArticleRepo $repo;
     public ArticleService $service;

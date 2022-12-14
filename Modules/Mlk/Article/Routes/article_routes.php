@@ -7,3 +7,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
     $router->resource('articles', 'ArticleController', ['except' => 'show']);
 });
 
+Route::group(['namespace' => 'Home'], static function ($router) {
+    $router->get('articles', 'ArticleController@home')->name('articles.home');
+    $router->get('articles/{slug}', 'ArticleController@details')->name('articles.details');
+});

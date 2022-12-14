@@ -15,26 +15,26 @@ class ArticleRequest extends FormRequest
 
     public function rules()
     {
-        $rules = [ 
+        $rules = [
             'category_id' => 'required|exists:categories,id',
             'title' => 'required|string|min:3|max:190|unique:articles,title',
             'time_to_read' => 'required|numeric',
-            'image' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'required|mimes:jpg,jpeg,png,webp,avif,bmp,xbm,wbmp|max:2048',
             'score' => 'required|numeric|in:0,1,2,3,4,5,6,7,8,9,10',
             'status' => ['required', Rule::in(Article::$statuses)],
             'type' => ['required', Rule::in(Article::$types)],
             'body' => 'required|string|min:3',
         ];
 
-        if (request()->method === 'PATCH') { 
+        if (request()->method === 'PATCH') {
             $rules['title'] = 'required|string|min:3|max:190|unique:articles,title,' . request()->id;
-            $rules['image'] = 'nullable|mimes:jpg,jpeg,png|max:2048';
+            $rules['image'] = 'nullable|mimes:jpg,jpeg,png,webp,avif,bmp,xbm,wbmp|max:2048';
         }
 
         return $rules;
     }
 
-    public function attributes() 
+    public function attributes()
     {
         return [
             'score' => 'امتیاز',
