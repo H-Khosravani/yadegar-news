@@ -2,6 +2,7 @@
 
 namespace Mlk\User\Models;
 use Mlk\Article\Models\Article;
+use Mlk\Comment\Models\Comment;
 use Laravel\Sanctum\HasApiTokens;
 use Overtrue\LaravelLike\Traits\Liker;
 use Spatie\Permission\Traits\HasRoles;
@@ -40,10 +41,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Category::class);
     }
 
-    # Relation article Table  :
+    # Relation articles Table  :
     public function articles()
     {
         return $this->hasMany(Article::class);
+    }
+
+    # Relation category Table  :
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     # Methods :

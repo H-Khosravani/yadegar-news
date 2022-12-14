@@ -196,6 +196,8 @@ return [
         Mlk\Category\Providers\CategoryServiceProvider::class,
         Mlk\Role\Providers\RoleServiceProvider::class,
         Mlk\Article\Providers\ArticleServiceProvider::class,
+        Mlk\Comment\Providers\CommentServiceProvider::class,
+
 
         /*
          * Application Service Providers...
