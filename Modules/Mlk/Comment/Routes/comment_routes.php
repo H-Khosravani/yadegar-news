@@ -10,5 +10,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
 });
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Home'], static function ($router) {
-    $router->post('comments', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
+    $router->post('comments', ['uses' => 'CommentController@store', 'as' => 'comments.store']); # Front Form In Singe.php
 });

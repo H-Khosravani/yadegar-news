@@ -21,13 +21,13 @@ class ArticleRepo
         return $this->query()->where('id', $id)->delete();
     }
 
-    public function findBySlug($slug)
+    public function findBySlug($slug) # Details Single Page
     {
         return $this->query()->whereSlug($slug)->first();
     }
 
     // Home Query
-    public function relatedArticles($categoryId, $id)
+    public function relatedArticles($categoryId, $id) 
     {
         return $this->query()
             ->where('category_id', $categoryId)
@@ -59,5 +59,4 @@ class ArticleRepo
     {
         return Article::query();
     }
-
 }

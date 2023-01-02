@@ -1,6 +1,7 @@
 <?php
 
 namespace Mlk\User\Models;
+
 use Mlk\Article\Models\Article;
 use Mlk\Comment\Models\Comment;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,9 +16,17 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, Liker;
 
-    protected $fillable = ['name','email','password'];
+    protected $fillable = [
+        'name', 'email', 'password', 'telegram', 'linkedin', 'twitter', 'instagram', 'bio', 'imageName', 'imagePath', 'status'
+    ];
     protected $hidden = ['password','remember_token'];
     protected $casts = ['email_verified_at' => 'datetime'];
+
+     // Variables
+     public const STATUS_ACTIVE = 'active';
+     public const STATUS_INACTIVE = 'inactive';
+
+     public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
 
     public function textStatusEmailVerifiedAt() : string
     {
@@ -47,7 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Article::class);
     }
 
-    # Relation category Table  :
+    # Relation comments Table  :
     public function comment()
     {
         return $this->hasMany(Comment::class);
@@ -56,11 +65,12 @@ class User extends Authenticatable implements MustVerifyEmail
     # Methods :
     public function path()
     {
-        return route('users.author', $this->name);
+        return route('users.author'/*RouteName*/, $this->name);
     }
 
-    public function image()
+    public function image() # User Image
     {
-        return asset('assets/imgs/logo2.svg');
+        return $this->imagePath;
     }
 }
+

@@ -38,7 +38,7 @@ class ArticleController extends Controller
     {
         $this->authorize('manage', $this->class);
 
-        $categories = $categoryRepo->getActiveCategories()->get(); 
+        $categories = $categoryRepo->getActiveCategories()->get();
 
         return view('Article::Admin.create', compact('categories'));
     }
@@ -47,13 +47,13 @@ class ArticleController extends Controller
     {
         $this->authorize('manage', $this->class);
 
-        // [$imageName, $imagePath] = ShareService::uploadImage($request->file('image'), 'articles');   1
-        [$imageName, $imagePath] = $this->service->uploadImage2($request->file('image'), 'articles');
+        // [$imageName, $imagePath] = $this->service->uploadImage2($request->file('image'), 'articles');
+        [$imageName, $imagePath] = ShareService::uploadImage($request->file('image'), 'articles');
 
-        $this->service->store($request, auth()->id(), $imageName, $imagePath); 
+        $this->service->store($request, auth()->id(), $imageName, $imagePath);
 
         # alert()->success(, 'عملیات با موفقیت انجام شد');
-        ShareRepo::successMessage('ساخت مقاله'); 
+        ShareRepo::successMessage('ساخت مقاله');
         return to_route('articles.index');
     }
 
@@ -78,7 +78,7 @@ class ArticleController extends Controller
 
         $this->service->update($request, $id, $imageName, $imagePath);
 
-        ShareRepo::successMessage('ویرایش مقاله'); 
+        ShareRepo::successMessage('ویرایش مقاله');
         return to_route('articles.index');
     }
 
@@ -87,20 +87,20 @@ class ArticleController extends Controller
         $this->authorize('manage', $this->class);
 
         $article = $this->repo->findById($id);
-        $this->service->deleteImage($article,'articles'); 
+        $this->service->deleteImage($article,'articles');
         $this->repo->delete($id);
 
-        ShareRepo::successMessage('حذف مقاله'); 
+        ShareRepo::successMessage('حذف مقاله');
         return to_route('articles.index');
     }
 
-    
+
     public function changeStatus($id)
     {
         $article = $this->repo->findById($id);
         $this->service->changeStatus($article);
 
-        ShareRepo::successMessage('تغییر وضعیت مقاله'); 
+        ShareRepo::successMessage('تغییر وضعیت مقاله');
         return to_route('articles.index');
     }
 
@@ -108,8 +108,8 @@ class ArticleController extends Controller
         private function uploadImage($file, $article): array
         {
         if (!is_null($file)) {
-            // [$imageName, $imagePath] = ShareService::uploadImage($file, 'articles'); 6
-            [$imageName, $imagePath] = $this->service->uploadImage2($file,'articles');
+            // [$imageName, $imagePath] = $this->service->uploadImage2($file,'articles');
+            [$imageName, $imagePath] = ShareService::uploadImage($file, 'articles');
 
         }
         else {

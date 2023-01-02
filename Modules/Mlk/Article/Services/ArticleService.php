@@ -47,7 +47,7 @@ class ArticleService
 
     public function deleteImage($article,$folder)
     {
-        if (Storage::disk('public')->exists('images/'. $folder .'/'. $article->imageName)) { 
+        if (Storage::disk('public')->exists('images/'. $folder .'/'. $article->imageName)) {
             return Storage::disk('public')->delete('images/'. $folder .'/'. $article->imageName);
         }
         return null;
@@ -59,7 +59,7 @@ class ArticleService
 
             return $article->update(['status' => Article::STATUS_INACTIVE]);
         }
-        
+
         return $article->update(['status' => Article::STATUS_ACTIVE]);
     }
 
@@ -70,17 +70,11 @@ class ArticleService
     }
 
     # Remove *** :
-    public function uploadImage2($file, $folder)
-    {
-        $name = time() . '.' . $file->getClientOriginalExtension();
-        
-        Storage::disk('public')->putFileAs('images/'. $folder, $file, $name); 
-
-        $path = asset('storage/images/' . $folder . '/' . $name); 
-
-        return [$name, $path];
-    }
-
-
-
+    // public function uploadImage2($file, $folder)
+    // {
+    //     $name = time() . '.' . $file->getClientOriginalExtension();
+    //     Storage::disk('public')->putFileAs('images/'. $folder, $file, $name);
+    //     $path = asset('storage/images/' . $folder . '/' . $name);
+    //     return [$name, $path];
+    // }
 }

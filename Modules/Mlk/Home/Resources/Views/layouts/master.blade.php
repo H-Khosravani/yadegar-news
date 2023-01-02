@@ -27,6 +27,6 @@
     <div class="dark-mark"></div>
     <!-- Vendor JS-->
     @include('Home::section.js')
+    @include('sweetalert::alert')
 </body>
-
 </html>

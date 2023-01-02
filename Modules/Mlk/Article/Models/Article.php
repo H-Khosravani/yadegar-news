@@ -4,6 +4,7 @@ namespace Mlk\Article\Models;
 
 use Mlk\User\Models\User;
 use Mlk\Category\Models\Category;
+use Mlk\Comment\Trait\HaveComments;
 use Illuminate\Database\Eloquent\Model;
 use Overtrue\LaravelLike\Traits\Likeable;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
@@ -12,9 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Article extends Model implements Viewable
 {
-    use HasFactory;
-    use InteractsWithViews;
-    use Likeable;
+    use HasFactory, InteractsWithViews, Likeable, HaveComments;
 
     protected $fillable = [
         'user_id', 'category_id', 'title', 'slug', 'time_to_read', 'imageName', 'imagePath', 'score', 'status',
@@ -37,11 +36,13 @@ class Article extends Model implements Viewable
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
     # Relation categories Table :
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
     public function cssStatus()
     {
         if ($this->status === self::STATUS_ACTIVE) {
@@ -52,9 +53,9 @@ class Article extends Model implements Viewable
             return 'warning';
         }
     }
+    # Method
     public function path()
     {
         return route('articles.details', $this->slug);
     }
 }
-

@@ -36,6 +36,8 @@ class UserService
         return $user->removeRole($role);
     }
 
+
+    # Update Profile - UPDATE
     public function updateProfile($request, $id, $imageName, $imagePath)
     {
         return User::query()->where('id', $id)->update([

@@ -43,4 +43,9 @@ class Category extends Model
         return $this->hasMany(Article::class);
     }
 
+    public function path() # Link Generator Helper Function From (Slug To Link) For Category
+    {
+        return route('categories.details', $this->slug);
+    }
+
 }

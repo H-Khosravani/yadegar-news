@@ -27,7 +27,7 @@ class CommentRepo
         return $this->findById($id)->update(['status' => $status]); # Change Status Active To Inactive And Inactive To Active
     }
 
-    public function getLatestComments()
+    public function getLatestComments() # Catch Comments And Show Every Page
     {
         return $this->query()->where('status', Comment::STATUS_ACTIVE)->latest();
     }
@@ -37,4 +37,3 @@ class CommentRepo
         return Comment::query();
     }
 }
- 

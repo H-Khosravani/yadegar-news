@@ -1,5 +1,4 @@
 <div class="col-lg-4 col-md-12 sidebar-right">
-    <!--Post aside style 1-->
     <div class="sidebar-widget mb-30">
         <div class="widget-header position-relative mb-30">
             <div class="row">
@@ -34,29 +33,19 @@
             </ul>
         </div>
     </div>
-
-
-    <!--Top authors-->
     <div class="sidebar-widget mb-30">
         <div class="widget-top-auhor border-radius-10 p-20 bg-white">
             <div class="widget-header widget-header-style-1 position-relative mb-15">
                 <h5 class="widget-title pl-5">نویسندگان <span>برتر</span></h5>
             </div>
             @foreach ($homeRepo->getAuthorUsers() as $user)
-            <a class="red-tooltip active" href="{{ $user->path() }}" data-toggle="tooltip" data-placement="top"
-               data-original-title="{{ $user->name }} -
-               {{-- {{ $user->articles->count() }}  --}}
-               مقاله">
-                <img src="{{ $user->image() }}" alt="{{ $user->name }}">
-            </a>
-        @endforeach
+                <a class="red-tooltip active" href="#" data-toggle="tooltip" data-placement="top"
+                   data-original-title="{{ $user->name }} - {{ $user->articles->count() }} مقاله">
+                    <img src="assets/imgs/authors/author-2.png" alt="{{ $user->name }}">
+                </a>
+            @endforeach
         </div>
     </div>
-
-
-
-
-
     <!--Newsletter-->
     <div class="sidebar-widget widget_newsletter border-radius-10 p-20 bg-white mb-30">
         <div class="widget-header widget-header-style-1 position-relative mb-15">
@@ -106,9 +95,6 @@
             </ul>
         </div>
     </div>
-
-
-
     <div class="sidebar-widget p-20 border-radius-15 bg-white widget-latest-comments wow fadeIn animated">
         <div class="widget-header mb-30">
             <h5 class="widget-title">آخرین <span>نظرات</span></h5>
@@ -118,9 +104,10 @@
                 <div class="last-comment mb-20 d-flex wow fadeIn animated">
                     <span class="item-count vertical-align">
                         <a class="red-tooltip author-avatar" href="#" data-toggle="tooltip" data-placement="top"
-                           data-original-title="{{ $comment->user->name }} -
-                           {{-- ({{ $comment->user->comments->count() }}  --}}
-                           مقاله)">
+                           data-original-title="{{ $comment->user->username }} -
+                           {{-- ({{ $comment->user->comments->count() }} مقاله) --}}
+                           "
+                           >
                             <img src="{{ $comment->user->image() }}" alt="user image">
                         </a>
                     </span>
@@ -132,7 +119,7 @@
                         </p>
                         <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase mb-10">
                             <span class="post-by">توسط
-                                <a href="{{ $comment->user->path() }}">{{ $comment->user->name }}</a>
+                                <a href="{{ $comment->user->path() }}">{{ $comment->user->username }}</a>
                             </span>
                             <span class="post-on">{{ $comment->created_at->diffForHumans() }}</span>
                         </div>
@@ -141,6 +128,4 @@
             @endforeach
         </div>
     </div>
-
-
 </div>
